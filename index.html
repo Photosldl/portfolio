@@ -9,14 +9,14 @@
         // Variable pour suivre si un clic a été effectué
         let isClicked = false;
         
-        // Fonction pour rediriger vers portfolio.html (ton portfolio) après 5 secondes
+        // Fonction pour rediriger vers portfolio.html (ton portfolio) après 2 secondes
         let redirectTimeout;
         function autoRedirectToPortfolio() {
             redirectTimeout = setTimeout(() => {
                 if (!isClicked) {
                     window.location.href = "portfolio.html";  // Rediriger vers portfolio.html (ton portfolio)
                 }
-            }, 5000);  // 5 secondes
+            }, 2000);  // 2 secondes
         }
 
         // Fonction pour annuler la redirection automatique et aller vers portfolio.html
