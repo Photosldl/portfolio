@@ -19,22 +19,14 @@
         <p>&copy; 2024 Léon Dubois Loyer</p>
     </footer>
 
+    <!-- JavaScript ajouté ici -->
     <script>
-        // Fonction pour empêcher le menu contextuel
-        function disableRightClick(event) {
-            event.preventDefault();  // Empêche l'affichage du menu contextuel
-        }
-
-        // Ajoute un écouteur d'événements pour empêcher le clic droit
-        window.onload = function() {
-            // Désactive le clic droit pour l'ensemble de la page
-            window.addEventListener('contextmenu', disableRightClick);
-
-            // Redirige automatiquement après 5 secondes
-            setTimeout(function() {
-                window.location.href = "portfolio.html";
-            }, 5000);
-        };
+        // Désactive le clic droit sur les images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('contextmenu', (event) => {
+                event.preventDefault(); // Empêche le menu contextuel
+            });
+        });
     </script>
 </body>
 </html>
