@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Léon Dubois Loyer</title>
     <link rel="stylesheet" href="CSS/style.css">
+    <!-- Préchargement de Portfolio.html -->
+    <link rel="prefetch" href="portfolio.html">
     <script>
-        // Variable pour suivre si un clic a été effectué
         let isClicked = false;
-        
-        // Fonction pour rediriger vers portfolio.html (ton portfolio) après 2 secondes
         let redirectTimeout;
+
+        // Fonction pour rediriger automatiquement
         function autoRedirectToPortfolio() {
             redirectTimeout = setTimeout(() => {
                 if (!isClicked) {
-                    window.location.href = "portfolio.html";  // Rediriger vers portfolio.html (ton portfolio)
+                    window.location.href = "portfolio.html";
                 }
-            }, 2000);  // 2 secondes
+            }, 2000);
         }
 
-        // Fonction pour annuler la redirection automatique et aller vers portfolio.html
+        // Fonction pour rediriger immédiatement après un clic
         function stopAutoRedirect(event) {
-            event.preventDefault();  // Empêche la redirection par défaut du lien
-            isClicked = true;  // Indique que l'image a été cliquée
-            clearTimeout(redirectTimeout);  // Annule le timer
-            window.location.href = "portfolio.html";  // Redirige immédiatement vers portfolio.html
+            event.preventDefault();
+            isClicked = true;
+            clearTimeout(redirectTimeout);
+            window.location.href = "portfolio.html";
         }
 
-        // Démarre la redirection automatique à l'ouverture de la page
+        // Démarre la redirection automatique au chargement de la page
         window.onload = autoRedirectToPortfolio;
     </script>
 </head>
@@ -35,7 +36,6 @@
     <section id="landing">
         <div class="landing-content">
             <h1>Portfolio Léon Dubois-Loyer</h1>
-            <!-- Ajout du gestionnaire d'événement onClick pour l'image -->
             <a href="portfolio.html" onclick="stopAutoRedirect(event)">
                 <img src="images/Village5_0032.png" alt="Chien Pudique - Apx 400">
             </a>
