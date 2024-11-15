@@ -13,12 +13,6 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
-}
-
-/* Cacher le header sur la landing page */
-#landing + header {
-    display: none;
-}
 
 /* En-tête et navigation (sera caché sur la landing page) */
 header {
