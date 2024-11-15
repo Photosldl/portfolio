@@ -14,7 +14,7 @@
         function autoRedirectToPortfolio() {
             redirectTimeout = setTimeout(() => {
                 if (!isClicked) {
-                    window.location.href = "index.html";  // Rediriger vers index.html (ton portfolio)
+                    window.location.href = "portfolio.html";  // Rediriger vers index.html (ton portfolio)
                 }
             }, 5000);  // 5 secondes
         }
@@ -24,7 +24,7 @@
             event.preventDefault();  // Empêche la redirection par défaut du lien
             isClicked = true;  // Indique que l'image a été cliquée
             clearTimeout(redirectTimeout);  // Annule le timer
-            window.location.href = "index.html";  // Redirige immédiatement vers index.html
+            window.location.href = "portfolio.html";  // Redirige immédiatement vers index.html
         }
 
         // Démarre la redirection automatique à l'ouverture de la page
@@ -36,7 +36,7 @@
         <div class="landing-content">
             <h1>Portfolio Léon Dubois-Loyer</h1>
             <!-- Ajout du gestionnaire d'événement onClick pour l'image -->
-            <a href="index.html" onclick="stopAutoRedirect(event)">
+            <a href="portfolio.html" onclick="stopAutoRedirect(event)">
                 <img src="images/Village5_0032.png" alt="Chien Pudique - Apx 400">
             </a>
         </div>
