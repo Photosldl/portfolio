@@ -1,0 +1,54 @@
+/* Style global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold; /* Police Helvetica en gras */
+}
+
+/* Header et navigation */
+header {
+    background-color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #000; /* Couleur noire */
+    font-size: 1.2em;
+    font-weight: bold; /* Plus gras */
+    padding: 5px 10px;
+}
+
+header nav ul li a:hover {
+    color: #555; /* Gris plus clair au survol */
+}
+
+/* Section Contact */
+#contact {
+    background-color: #fff; /* Fond blanc */
+    color: #333; /* Couleur du texte */
+    height: calc(100vh - 60px); /* Hauteur totale moins celle du header */
+    display: flex; /* Active Flexbox */
+    flex-direction: column; /* Arrange les éléments verticalement */
+    justify-content: center; /* Centre les éléments verticalement */
+    align-items: center; /* Centre les éléments horizontalement */
+    text-align: center; /* Aligne le texte au centre */
+}
+
+#contact p {
+    font-size: 2em; /* Taille légèrement plus grande pour les informations */
+    margin: 10px 0; /* Espacement entre les lignes */
+    color: #000; /* Texte en noir */
+    line-height: 1.5; /* Espacement entre les lignes */
+}
