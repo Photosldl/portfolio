@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Léon Dubois Loyer</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <!-- Header visible uniquement dans le portfolio -->
+    <header id="portfolio-header">
+        <nav>
+            <ul>
+                <li><a href="landing.html">Accueil</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Galerie Portfolio -->
+    <section id="portfolio">
+        <div class="gallery">
+            <img src="images/Moyen format test0002.png" alt="Double exposition d'une pellicule 120">
+            <img src="images/Village5_0032.png" alt="Chien Pudique - Apx 400">
+            <img src="images/Village6_0013.png" alt="Portrait d'un cheval">
+            <img src="images/Village6_0025.png" alt="regard d'un cheval">
+            <img src="images/Village6_0026.png" alt="cheval flou">
+            <img src="images/Village6_0027.png" alt="Cheval à la ferme de woo - rosiéres">
+            <img src="images/vach.png" alt="vache - HP5">
+        </div>
+    </section>
+
+    <!-- Modale pour agrandir les images -->
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <span class="close" onclick="closeModal(event)">&times;</span>
+        <img id="modalImage" class="modal-content" alt="Image agrandie">
+        <!-- Boutons de navigation -->
+        <span class="prev" onclick="navigateImage(-1)">&#10094;</span>
+        <span class="next" onclick="navigateImage(1)">&#10095;</span>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Léon Dubois Loyer</p>
+    </footer>
+
+    <script>
+        const images = document.querySelectorAll('.gallery img');
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modalImage');
+        let currentIndex = 0;
+
+        images.forEach((image, index) => {
+            image.addEventListener('click', function () {
+                modal.style.display = "flex";
+                modalImage.src = this.src;
+                currentIndex = index;
+            });
+        });
+
+        function closeModal(event) {
+            if (event.target === modal || event.target.className === 'close') {
+                modal.style.display = "none";
+            }
+        }
+
+        function navigateImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            if (currentIndex >= images.length) currentIndex = 0;
+            modalImage.src = images[currentIndex].src;
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (modal.style.display === "flex") {
+                if (event.key === "ArrowRight") navigateImage(1);
+                else if (event.key === "ArrowLeft") navigateImage(-1);
+                else if (event.key === "Escape") closeModal(event);
+            }
+        });
+    </script>
+</body>
+</html>

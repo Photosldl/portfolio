@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Léon Dubois Loyer</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script>
+        // Variable pour suivre si un clic a été effectué
+        let isClicked = false;
+        
+        // Fonction pour rediriger vers index.html (ton portfolio) après 5 secondes
+        let redirectTimeout;
+        function autoRedirectToPortfolio() {
+            redirectTimeout = setTimeout(() => {
+                if (!isClicked) {
+                    window.location.href = "index.html";  // Rediriger vers index.html (ton portfolio)
+                }
+            }, 5000);  // 5 secondes
+        }
+
+        // Fonction pour annuler la redirection automatique et aller vers index.html
+        function stopAutoRedirect(event) {
+            event.preventDefault();  // Empêche la redirection par défaut du lien
+            isClicked = true;  // Indique que l'image a été cliquée
+            clearTimeout(redirectTimeout);  // Annule le timer
+            window.location.href = "index.html";  // Redirige immédiatement vers index.html
+        }
+
+        // Démarre la redirection automatique à l'ouverture de la page
+        window.onload = autoRedirectToPortfolio;
+    </script>
+</head>
+<body>
+    <section id="landing">
+        <div class="landing-content">
+            <h1>Portfolio Léon Dubois-Loyer</h1>
+            <!-- Ajout du gestionnaire d'événement onClick pour l'image -->
+            <a href="index.html" onclick="stopAutoRedirect(event)">
+                <img src="images/Village5_0032.png" alt="Chien Pudique - Apx 400">
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Léon Dubois Loyer</p>
+    </footer>
+</body>
+</html>
