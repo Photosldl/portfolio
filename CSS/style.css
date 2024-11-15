@@ -1,9 +1,11 @@
 /* Applique la police Helvetica à tout le site */
+/* Style global */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold; /* Police Helvetica en gras */
 }
 
 /* Style général du corps de la page */
