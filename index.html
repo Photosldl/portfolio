@@ -1,3 +1,66 @@
-window.addEventListener('contextmenu', function(event) {
-    event.preventDefault();  // Empêche l'affichage du menu contextuel
-});
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Léon Dubois Loyer</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script>
+        // Variable pour suivre si un clic a été effectué
+        let isClicked = false;
+        let redirectTimeout;
+        let portfolioContent = null;  // Pour stocker le contenu du portfolio une fois chargé
+        
+        // Fonction pour rediriger vers portfolio.html après 5 secondes
+        function autoRedirectToPortfolio() {
+            redirectTimeout = setTimeout(() => {
+                if (!isClicked) {
+                    window.location.href = "portfolio.html";  // Rediriger vers portfolio.html
+                }
+            }, 5000);  // 5 secondes
+        }
+
+        // Fonction pour empêcher toute autre redirection ou interaction
+        function stopAutoRedirect(event) {
+            event.preventDefault();  // Empêche toute action par défaut (même si on clique quelque part)
+        }
+
+        // Fonction pour charger le contenu du portfolio en arrière-plan
+        function preloadPortfolio() {
+            fetch('portfolio.html')
+                .then(response => response.text())
+                .then(data => {
+                    portfolioContent = data;  // Stocke le contenu de portfolio.html
+                    console.log('Portfolio chargé en arrière-plan');
+                })
+                .catch(err => console.error('Erreur lors du chargement de portfolio.html', err));
+        }
+
+        // Lancer le préchargement et la redirection automatique au chargement de la page
+        window.onload = function() {
+            preloadPortfolio();  // Charge le portfolio en arrière-plan
+            autoRedirectToPortfolio();  // Lance la redirection automatique après 5 secondes
+        };
+
+        // Désactiver le menu contextuel (clic droit)
+        window.addEventListener('contextmenu', function(event) {
+            event.preventDefault();  // Empêche l'affichage du menu contextuel
+        });
+    </script>
+</head>
+<body>
+    <section id="landing">
+        <div class="landing-content">
+            <h1>Portfolio Léon Dubois-Loyer</h1>
+            <!-- L'image s'affiche toujours, mais il n'y a plus de lien cliquable -->
+            <img src="images/Village5_0032.png" alt="Chien Pudique - Apx 400">
+            <!-- Message pendant le chargement -->
+            <p>Chargement du portfolio en arrière-plan...</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Léon Dubois Loyer</p>
+    </footer>
+</body>
+</html>
