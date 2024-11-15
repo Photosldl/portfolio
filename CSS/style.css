@@ -21,8 +21,9 @@ body {
 /* En-tête et navigation (sera caché sur la landing page) */
 header {
     background-color: #fff;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
+    border-bottom: 1px solid #ddd;
 }
 
 header nav ul {
@@ -41,7 +42,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: #555;
+    color: #555; /* Gris plus clair au survol */
 }
 
 /* Galerie d'images */
