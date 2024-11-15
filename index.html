@@ -8,37 +8,49 @@
     <script>
         // Variable pour suivre si un clic a été effectué
         let isClicked = false;
-        
-        // Fonction pour rediriger vers index.html (ton portfolio) après 5 secondes
         let redirectTimeout;
+        let portfolioContent = null;  // Pour stocker le contenu du portfolio une fois chargé
+        
+        // Fonction pour rediriger vers portfolio.html après 5 secondes
         function autoRedirectToPortfolio() {
             redirectTimeout = setTimeout(() => {
                 if (!isClicked) {
-                    window.location.href = "portfolio.html";  // Rediriger vers index.html (ton portfolio)
+                    window.location.href = "portfolio.html";  // Rediriger vers portfolio.html
                 }
             }, 5000);  // 5 secondes
         }
 
-        // Fonction pour annuler la redirection automatique et aller vers index.html
+        // Fonction pour empêcher toute autre redirection ou interaction
         function stopAutoRedirect(event) {
-            event.preventDefault();  // Empêche la redirection par défaut du lien
-            isClicked = true;  // Indique que l'image a été cliquée
-            clearTimeout(redirectTimeout);  // Annule le timer
-            window.location.href = "portfolio.html";  // Redirige immédiatement vers index.html
+            event.preventDefault();  // Empêche toute action par défaut (même si on clique quelque part)
         }
 
-        // Démarre la redirection automatique à l'ouverture de la page
-        window.onload = autoRedirectToPortfolio;
+        // Fonction pour charger le contenu du portfolio en arrière-plan
+        function preloadPortfolio() {
+            fetch('portfolio.html')
+                .then(response => response.text())
+                .then(data => {
+                    portfolioContent = data;  // Stocke le contenu de portfolio.html
+                    console.log('Portfolio chargé en arrière-plan');
+                })
+                .catch(err => console.error('Erreur lors du chargement de portfolio.html', err));
+        }
+
+        // Lancer le préchargement et la redirection automatique au chargement de la page
+        window.onload = function() {
+            preloadPortfolio();  // Charge le portfolio en arrière-plan
+            autoRedirectToPortfolio();  // Lance la redirection automatique après 5 secondes
+        };
     </script>
 </head>
 <body>
     <section id="landing">
         <div class="landing-content">
             <h1>Portfolio Léon Dubois-Loyer</h1>
-            <!-- Ajout du gestionnaire d'événement onClick pour l'image -->
-            <a href="portfolio.html" onclick="stopAutoRedirect(event)">
-                <img src="images/Village5_0032.png" alt="Chien Pudique - Apx 400">
-            </a>
+            <!-- L'image s'affiche toujours, mais il n'y a plus de lien cliquable -->
+            <img src="images/Village5_0032.png" alt="Chien Pudique - Apx 400">
+            <!-- Message pendant le chargement -->
+            <p>Chargement du portfolio en arrière-plan...</p>
         </div>
     </section>
 
